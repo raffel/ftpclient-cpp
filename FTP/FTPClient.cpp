@@ -211,13 +211,10 @@ std::string CFTPClient::ParseURL(const std::string &strRemoteFile) const {
    if (strUri.compare(0, 4, "FTP:") != 0 && strUri.compare(0, 5, "SFTP:") != 0) {
       switch (m_eFtpProtocol) {
          case FTP_PROTOCOL::FTP:
+         case FTP_PROTOCOL::FTPS:
          case FTP_PROTOCOL::FTPES:
          default:
             strURL = "ftp://" + strURL;
-            break;
-
-         case FTP_PROTOCOL::FTPS:
-            strURL = "ftps://" + strURL;
             break;
 
          case FTP_PROTOCOL::SFTP:
